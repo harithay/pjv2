@@ -372,8 +372,10 @@ class GroupedButtonTab {
  */
 class Button {
 	constructor(className, text){
+
 		this.html = $('<div class="toolbar-item" data-toolbar-class=' + className + 
-		'><span class="toolbar-item-text button-hook">' + text + '</span></div>');
+				'><span class="toolbar-item-text button-hook">' + text + '</span></div>');
+		
 		this.buttonText = $(this.html).find(".toolbar-item-text");
 		this.buttonText[0].addEventListener("click",  (function(e){
 					console.log("Button");
@@ -406,6 +408,18 @@ class Button {
 	};
 	close(){
 		$(this.html).find(".toolbar-item-text").removeClass("active");
+	};
+	addClass(targetElementClassName, className){
+		$(this.html).find("." + targetElementClassName).addClass(className);
+	};
+	/**
+	 * Add class to inner span
+	 */
+	addImageClass(){
+		this.addClass("toolbar-item-text", "image-only");
+	}; 
+	addIconClass(){
+		this.addClass("toolbar-item-text", "icon-only");
 	};
 	addEventListener(handler) {
 		this.clickHandler = handler;

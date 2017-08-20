@@ -738,7 +738,8 @@ var FixedCollageContainerModel = Backbone.Model.extend({
 
 		}else{
 			var cellContentChildren = backboneModelHelper.getAllModelsOfAModelByType(this.cid, ModelRegistry.cellContent);
-			var button = new MenuButton("collageBackgroundColor", "Background");
+			var button = new MenuButton("collageBackgroundColor", "<img class='toolbar-button-image' src='images/pallet_48.png'/>");
+			button.addImageClass();
 			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Background color");
 			button.addMenuItem(colorpicker);
 
@@ -817,7 +818,8 @@ var FixedCollageContainerModel = Backbone.Model.extend({
 				this.updateStyleByObject(object);
 			}).bind(this));
 
-			var button3 = new Button("delete", "Delete");
+			var button3 = new Button("delete", '<i class="material-icons">delete_forever</i>');
+			button3.addIconClass();
 			button3.addEventListener((function(e){
 				var parentModel = backboneModelHelper.findParentOfModelByCID(this.cid);
 				var children = parentModel.get("children");
@@ -1413,8 +1415,9 @@ var CellContentModel = Backbone.Model.extend({
 			}*/
 			return [button, button2];
 		}else{
-			var button = new MenuButton("color", "Cell color");
-			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Background color");
+			var button = new MenuButton("color", "<img class='toolbar-button-image' src='images/pallet_48.png'/>");
+			button.addImageClass();
+			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Cell background color");
 			button.addMenuItem(colorpicker);
 
 			colorpicker.addEventListener((function(e){
@@ -2336,7 +2339,8 @@ var EditableTextModel = Backbone.Model.extend({
 		if(eventType == MOUSE_EVENTS.DBLCLICK){
 
 		}else{
-			var button = new MenuButton("color", "Color");
+			var button = new MenuButton("color", "<img class='toolbar-button-image' src='images/pallet_48.png'/>");
+			button.addImageClass();
 			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Background color");
 			button.addMenuItem(colorpicker);
 

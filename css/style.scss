@@ -368,12 +368,25 @@ body {
 }
 
 .toolbar-item-text {
-  padding: 5px;
-  background-color: rgba(239, 239, 239, 0.62);
-  border: 2px solid #fff;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 5px;
+    background-color: rgba(239, 239, 239, 0.62);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
     margin-right: 3px;
+}
+.toolbar-item-text.icon-only {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.toolbar-item-text.icon-only i.material-icons {
+    padding-top: 0px;
+    margin-top: -2px;
+    padding-bottom: 0px;
+}
+
+.toolbar-item-text.image-only img.toolbar-button-image{
+    width: 20px;
 }
 .toolbar-item-text.active,
 .toolbar-item-text:hover {

@@ -515,7 +515,7 @@ class EditableTextView extends React.Component {
 			onKeyDown: this.control,
 			onDrop: this.control
 			//onKeyUp = {this.control}
-		}, React.createElement("span", { style: { "outline": "0px solid transparent" }
+		}, React.createElement("span", { style: { "outline": "0px solid transparent", "position": "absolute" }
 
 		})));
 	}
