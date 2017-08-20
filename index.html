@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns= "http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Collage maker - Use Photo Joiner Editor to create a beautiful collage</title>
+    <meta name="description" content="Make a perfect collage using templates. PhotoJoiner editor gives you everything you need to create a beautiful collage online.">
+	<meta name="keywords" content="make a collage, collage, collage maker,  photo joiner, photojoiner, combine multiple photos together, photo collage maker, create collage, photo collage">
+	<link rel="canonical" href="https://www.photojoiner.net/collage-maker/editor"/>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
+    
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/css/bootstrap-colorpicker.min.css" rel = "stylesheet">
+    <link rel="stylesheet" href="css/lib/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/draft-js/0.10.1/Draft.css" />
+    <link rel="stylesheet" href="css/lib/perfect-scrollbar.min.css" />
+    <link href = "https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/lib/jquery.fileupload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    <link href = "css/style.css" rel = "stylesheet">
+
+    <script src = "js/lib/jquery.min.js"></script>
+    <script src = "js/lib/jquery-ui.min.js"></script>
+
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="js/lib/jquery.ui.widget.js" defer></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="js/lib/jquery.iframe-transport.js" defer></script>
+    <!-- The basic File Upload plugin -->
+    <script src="js/lib/jquery.fileupload.js" defer></script>
+
+    <script src = "js/lib/json2.js" defer></script>
+    <script src = "js/lib/underscore.js" defer></script>
+    <script src = "js/lib/backbone.js" defer></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.1/js/bootstrap-colorpicker.min.js"></script>
+    <script src = "js/lib/jquery.ui.touch-punch.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js" defer></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/draft-js/0.10.1/Draft.js" defer></script>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" defer></script>
+    <script src = "js/lib/bootstrap.min.js" defer></script>
+    <script src = "js/lib/perfect-scrollbar.jquery.min.js" defer></script>
+    <script src = "https://cdn.polyfill.io/v2/polyfill.min.js" defer></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7820192138716446",
+            enable_page_level_ads: true
+        });
+    </script>
+</head>
+<style>
+
+</style>
+<body>
+<!-- 
+    container:
+        Container take care of the maximum space available to canvas
+    canvas:
+        Users editable space. This is calculated based on users request of width and height.
+        We maximize editing space by fiting it best way we can inside the container.
+ -->
+<div class="site">
+    <div class="header">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+             -->
+              <a class="navbar-brand" href="#">Photojoiner.net</a>
+            <!-- Collect the nav links, forms, and other content for toggling 
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+              <ul class="nav navbar-nav navbar-right">
+                <li><a class="new-canvas" href="#">New canvas</a></li>
+                <li><a href="#" onclick="_urq.push(['Feedback_Open']);">Feedback</a></li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
+                  <ul class="dropdown-menu convert-design">
+                    <li><a class="convert-option" data-convert-type="png" href="#">As a PNG</a></li>
+                    <li><a class="convert-option" data-convert-type="jpg" href="#">As a JPG</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Share</a></li>
+                  </ul>
+                </li>
+              </ul>
+           <!-- </div> /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div class="editorContainer">
+        <section class="graphicsPanel">
+            <section class="menu">
+                <div class="selectedItem">
+                    <div class="top"></div>
+                    <div></div>
+                    <div class="left"></div>
+                </div>
+                <menu> 
+                    <li class="menu-tab layout-tab active" data-tab="1"> 
+                        <span><i class="material-icons">dashboard</i> Layouts </span>
+                    </li>
+                    <li class="menu-tab shapes-tab" data-tab="2"> 
+                        <span><i class="material-icons">picture_in_picture</i> Elements </span>
+                    </li>
+                    <li class="menu-tab text-tab" data-tab="3"> 
+                        <span><i class="material-icons">text_format</i> Text </span>
+                    </li>
+                    <li class="menu-tab uploads-tab" data-tab="4">
+                        <span><i class="material-icons">cloud_upload</i> Uploads </span>
+                    </li>
+                </menu>
+                <div class="menuHide">
+                    <div class="top"><i class="material-icons">keyboard_arrow_left</i></div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="sidemenu-content-pane layout-pane" data-pane="1">
+                    <div class="layout-pane-content">
+                            <input class="layoutSearchBox" type="text" name="search" placeholder="Number of pictures..">
+                    </div>
+                </div>
+                <div class="sidemenu-content-pane shapes-pane" data-pane="2">
+                    <div class="shapes-pane-content">
+                         
+                    </div>
+                </div>
+                <div class="sidemenu-content-pane text-pane" data-pane="3">
+                    <div class="text-pane-content">
+                         
+                    </div>
+                </div>
+                <div class="sidemenu-content-pane uploads-pane" data-pane="4">
+                    <div class="fileupload-button-parent">
+                        <span class="btn btn-success fileinput-button">
+                            <span>Upload Files</span>
+                            <!-- The file input field used as target for the file upload widget -->
+                            <input id="fileupload" class="fileupload-button" type="file" name="files[]" multiple>
+                        </span>
+                    </div>
+                    <div class="uploads-pane-content">
+                    
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="editorPanel"></section>
+        <section class="resizePanel">
+                <div class="zoomOptionPanel">
+                        <div class="zoomOptionList">
+                            <ul class="list">
+                              <li data-zoom="10" class="zoomValue number">10%</li>
+                              <li data-zoom="25" class="zoomValue number">25%</li>
+                              <li data-zoom="50" class="zoomValue number">50%</li>
+                              <li data-zoom="75" class="zoomValue number">75%</li>
+                              <li data-zoom="100" class="active zoomValue number">100%</li>
+                              <li data-zoom="125" class="zoomValue number">125%</li>
+                              <li data-zoom="150" class="zoomValue number">150%</li>
+                              <li data-zoom="175" class="zoomValue number">175%</li>
+                              <li data-zoom="200" class="zoomValue number">200%</li>
+                              <li data-zoom="300" class="zoomValue number">300%</li>
+                              <li data-zoom="400" class="zoomValue number">400%</li>
+                              <li data-zoom="a" class="zoomValue letter">Fit</li>
+                              <li data-zoom="b" class="zoomValue letter">Fill</li>
+                            </ul>
+                        </div>
+                        <div class="zoomOptionListPointArrow"></div>
+                    </div>
+            <div class="zoomOptions">
+                <div class="resizeCanvas menuItem">Canvas size</div>
+                <div class="resizeButton zoomIn icon"><i class="material-icons">add</i></div>
+                <div class="menu menuItem">100%
+
+                </div>
+                <div class="resizeButton zoomOut icon" ><i class="material-icons">remove</i></div>
+            </div>
+        </section>
+    </div>
+    <div class="adsense adParentContainer bottom">
+        <div class="adsenseContainerCloseButton">
+            <span>Close Advertisement (x)</span>
+        </div>
+        <div class="adsenseContainer">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Photojoiner mobile ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-7820192138716446"
+                data-ad-slot="1067784887"
+                data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+        </div>
+    </div>
+</div>
+<div class="confirmNewCanvas downloadConvertedDesgin resizeCanvasModal confirmation modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button class="cancel-changes"type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="save-changes"type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal START -->
+<div class="modal fade" id="contactus_medal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact us</h4>
+      </div>
+      <div class="modal-body">
+        <form id="contact_form" class="form-horizontal" role="form" method="post" action="index.php">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message" class="col-sm-2 control-label">Message</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="4" name="message"></textarea>
+            
+        </div>
+    </div>
+</form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="contactus_submit" type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
+<script type="text/javascript" defer>
+    $('#contactus_submit').click(function(e){
+        var data = $("#contact_form").serialize();
+        $.post('/contact-us', data, function(result){
+            if(result == 1){
+                $('#contactus_medal').modal('hide');
+            }else {
+            }
+        });
+    });
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72327712-2', 'auto');
+  ga('send', 'pageview');
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'pageload',
+    eventAction: 'Loaded mobile page',
+});
+
+</script>
+<script type="text/javascript">
+window._urq = window._urq || [];
+_urq.push(['initSite', '7a0d71ff-0586-4107-9e39-02a407894d08']);
+(function() {
+var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+})();
+</script>
+<script src = "js/grids.js" defer></script>
+<script src = "js/static_helpers.js" defer></script>
+<script src = "js/helper_classes.js" defer></script>
+<script src = "js/model.js" defer></script>
+<script src = "js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "collage-maker",
+  "version": "1.0.0",
+  "description": "Collage Maker by Photojoiner.net",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haritha Yahathugoda",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-polyfill": "^6.23.0",
+    "browser-sync": "^2.18.11",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-batch": "^1.0.5",
+    "gulp-browserify": "^0.5.1",
+    "gulp-minify": "^1.0.0",
+    "gulp-react": "^3.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-watch": "^4.3.11",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "html": "^1.0.0",
+    "react-redux": "^5.0.5"
+  }
+}

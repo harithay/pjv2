@@ -1,0 +1,135 @@
+<html>
+<head>
+    <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel = "stylesheet">
+    
+    <link href = "css/lib/bootstrap-colorpicker.css" rel = "stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href = "css/style.css" rel = "stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "js/lib/json2.js"></script>
+    <script src = "js/lib/underscore.js"></script>
+    <script src = "js/lib/backbone.js"></script>
+    <script src = "js/lib/bootstrap-colorpicker.js"></script>
+    <script src = "js/helper.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+
+</style>
+<body>
+<!-- 
+    container:
+        Container take care of the maximum space available to canvas
+    canvas:
+        Users editable space. This is calculated based on users request of width and height.
+        We maximize editing space by fiting it best way we can inside the container.
+ -->
+<div class="site">
+    <div class="editorContainer">
+        <section class="graphicsPanel">
+            <section class="content">
+            
+            </section>
+        </section>
+        <section class="editorPanel"></section>
+        <section class="resizePanel">
+            <div class="zoomOptions">
+                <div class="glyphicon glyphicon-zoom-in icon resizeButton zoomIn" aria-hidden="true"></div>
+                <div class="text">100%
+                    <div class="zoomOptionList">
+                        <ul class="list">
+                          <li data-zoom="10">10%</li>
+                          <li data-zoom="25">25%</li>
+                          <li data-zoom="50">50%</li>
+                          <li data-zoom="75">75%</li>
+                          <li data-zoom="100">100%</li>
+                          <li data-zoom="125">125%</li>
+                          <li data-zoom="150">150%</li>
+                          <li data-zoom="175">175%</li>
+                          <li data-zoom="200">200%</li>
+                          <li data-zoom="300">300%</li>
+                          <li data-zoom="400">400%</li>
+                          <li data-zoom="a">Fit</li>
+                          <li data-zoom="b">Fill</li>
+                        </ul>
+                    </div>
+                    <div class="zoomOptionListPointArrow"></div>
+                </div>
+                <div class="glyphicon glyphicon-zoom-out icon resizeButton zoomOut" aria-hidden="true"></div>
+            </div>
+        </section>
+    </div>
+    <div class="header">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Photojoiner.net</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              
+              
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Feedback</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">As a PNG</a></li>
+                    <li><a href="#">As a JPG</a></li>
+                    <li><a href="#">As a PDF</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Share</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+</div>
+<script type="text/javascript">
+    var Component = Backbone.Model.extend({
+        id : 0,
+        width : "100%",
+        height : "100%",
+        initialize : function(){
+            this.on("change", function(){
+                console.log('Changed attributes: ' + JSON.stringify(this.changed));
+                console.log('Previous attributes: ' + JSON.stringify(this.previousAttributes()));
+            });
+        }
+    });
+    // All 4 coners are expandable
+    ResizableComponent = Component.extend({
+        
+    });
+    // Exands only in horizontal direction
+    ExpandableComponent = Component.extend({
+
+    });  
+    ResizableRotatableComponent = ResizableComponent.extend({
+        
+    });
+    ExpandableRotatableComponent = Component.extend({
+        
+    });
+</script>
+<script src = "js/model.js"></script>
+<script src = "js/main.js"></script>
+</body>
+</html>
