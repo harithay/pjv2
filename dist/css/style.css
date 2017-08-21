@@ -365,6 +365,10 @@ body {
 .toolbar-item-text.image-only img.toolbar-button-image {
   width: 20px; }
 
+.toolbar-item-text.empty-space img {
+  width: 20px;
+  height: 20px; }
+
 .toolbar-item-text.active,
 .toolbar-item-text:hover {
   border: 2px solid #e9e9e9; }

@@ -2339,18 +2339,37 @@ var EditableTextModel = Backbone.Model.extend({
 		if(eventType == MOUSE_EVENTS.DBLCLICK){
 
 		}else{
-			var button = new MenuButton("color", "<img class='toolbar-button-image' src='images/pallet_48.png'/>");
-			button.addImageClass();
+			// Background color
+			var buttonTextBoxBackgroundColor = new MenuButton("color", "<img/>");
+			buttonTextBoxBackgroundColor.addEmptySpaceClass();
+			buttonTextBoxBackgroundColor.addBackgroundColorToItem(this.get("style").backgroundColor);
 			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Background color");
-			button.addMenuItem(colorpicker);
+			buttonTextBoxBackgroundColor.addMenuItem(colorpicker);
 
 			colorpicker.addEventListener((function(e){
 				var color = rgbaObjectToCSSRGBAColorString(e.color.toRGB());
 				var object = {
 					backgroundColor: color
+				};
+				this.updateStyleByObject(object, false);
+				buttonTextBoxBackgroundColor.addBackgroundColorToItem(color);
+			}).bind(this));
+			// Text color
+			var buttonTextColor = new MenuButton("text-color", "<img></img>"); // <img class='toolbar-button-image' src='images/pallet_48.png'/>
+			buttonTextColor.addEmptySpaceClass();
+			buttonTextColor.addBackgroundColorToItem(this.get("style").color);
+			var colorpicker = new ColorPicker(this.get("style").color, "Text color");
+			buttonTextColor.addMenuItem(colorpicker);
+
+			colorpicker.addEventListener((function(e){
+				var color = rgbaObjectToCSSRGBAColorString(e.color.toRGB());
+				var object = {
+					color: color
 				}
+				buttonTextColor.addBackgroundColorToItem(color);
 				this.updateStyleByObject(object, false);
 			}).bind(this));
+			// Dimension prefixes
 			var button2 = new MenuButton("dimension", "Dimension");
 			var textItem = new TextItem("Fit to editor");
 			button2.addMenuItem(textItem);
@@ -2388,10 +2407,10 @@ var EditableTextModel = Backbone.Model.extend({
 			}).bind(this));
 			if(isSmallScreen){
 				var buttonGroup = new GroupedButtonTab("buttonGroup", "Edit Text");
-				buttonGroup.addButton(button).addButton(button2).addButton(button3);
+				buttonGroup.addButton(buttonTextBoxBackgroundColor).addButton(buttonTextColor).addButton(button2).addButton(button3);
 				return [buttonGroup];
 			}else{
-				return [button, button2, button3];
+				return [buttonTextBoxBackgroundColor,buttonTextColor, button2, button3];
 			}
 		}
 	},

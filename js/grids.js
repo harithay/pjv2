@@ -63,6 +63,7 @@ var texts = [{
 		"data" : "",
 		"style" : {
 			"backgroundColor" : "rgba(255, 255, 255, 0)",
+			"color" : "rgba(0, 0, 0, 1)",
 			"borderRadius" : "0%",
 			"transform": "translate(0px, 0px)",
 			"width": "180px",
@@ -81,6 +82,7 @@ var texts = [{
 		"data" : "",
 		"style" : {
 			"backgroundColor" : "rgba(255, 255, 255, 0)",
+			"color" : "rgba(0, 0, 0, 1)",
 			"borderRadius" : "0%",
 			"transform": "translate(0px, 0px)",
 			"width": "180px",
@@ -100,6 +102,7 @@ var texts = [{
 		"data" : "",
 		"style" : {
 			"backgroundColor" : "rgba(255, 255, 255, 0)",
+			"color" : "rgba(0, 0, 0, 1)",
 			"borderRadius" : "0%",
 			"transform": "translate(0px, 0px)",
 			"width": "180px",

@@ -421,6 +421,12 @@ class Button {
 	addIconClass(){
 		this.addClass("toolbar-item-text", "icon-only");
 	};
+	addEmptySpaceClass(){
+		this.addClass("toolbar-item-text", "empty-space");
+	};
+	addBackgroundColorToItem(color){
+		this.getHTML().find(".toolbar-item-text img").css("background-color", color)
+	};
 	addEventListener(handler) {
 		this.clickHandler = handler;
 		this.buttonText[0].addEventListener("click", this.clickHandler);	
