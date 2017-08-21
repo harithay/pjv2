@@ -2340,7 +2340,7 @@ var EditableTextModel = Backbone.Model.extend({
 
 		}else{
 			// Background color
-			var buttonTextBoxBackgroundColor = new MenuButton("color", "<img/>");
+			var buttonTextBoxBackgroundColor = new MenuButton("color", "<img src='images/transparent.png'/>");
 			buttonTextBoxBackgroundColor.addEmptySpaceClass();
 			buttonTextBoxBackgroundColor.addBackgroundColorToItem(this.get("style").backgroundColor);
 			var colorpicker = new ColorPicker(this.get("style").backgroundColor, "Background color");
@@ -2355,7 +2355,7 @@ var EditableTextModel = Backbone.Model.extend({
 				buttonTextBoxBackgroundColor.addBackgroundColorToItem(color);
 			}).bind(this));
 			// Text color
-			var buttonTextColor = new MenuButton("text-color", "<img></img>"); // <img class='toolbar-button-image' src='images/pallet_48.png'/>
+			var buttonTextColor = new MenuButton("text-color", "<img src='images/transparent.png'/>"); // <img class='toolbar-button-image' src='images/pallet_48.png'/>
 			buttonTextColor.addEmptySpaceClass();
 			buttonTextColor.addBackgroundColorToItem(this.get("style").color);
 			var colorpicker = new ColorPicker(this.get("style").color, "Text color");

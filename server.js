@@ -12,11 +12,10 @@ app.use(express.static(path.join("__dirname", 'dist')));
 //app.use(cookieParser('S3CRE7'));
 //app.use(session());
 app.get('/', function (req, res) {
-  
   var request_page_url = req.protocol + '://' + req.get('host') + req.originalUrl;
   res.render('./index.html', {}
     )
 })
 app.listen(3004, function () {
-  console.log('Example app listening on port 3004!');
+  console.log('Listening on port 3004!');
 })
